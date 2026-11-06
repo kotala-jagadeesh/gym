@@ -1,5 +1,5 @@
 # College Gym Website
-
+View the site `https://kotala-jagadeesh.github.io/gym/`
 A one-page website for a college gym, built with plain HTML and CSS in a neon green and dark theme. There is no build step and no framework.
 
 ## Files
