@@ -1,5 +1,7 @@
 # College Gym Website
-View the site `https://kotala-jagadeesh.github.io/gym/`
+
+**[View the live site](https://kotala-jagadeesh.github.io/gym/)**
+
 A one-page website for a college gym, built with plain HTML and CSS in a neon green and dark theme. There is no build step and no framework.
 
 ## Files
@@ -50,6 +52,13 @@ Open the file in any text editor (VS Code, Notepad) and change the following.
 ## Join form
 
 The form currently only shows a thank-you message on the page. It does not save or send the details anywhere. To collect real sign-ups, connect it to a form service (such as Google Forms or Formspree) or to your own backend, by editing the `<form>` tag and the script at the bottom of the file.
+
+## Publish on GitHub Pages
+
+1. Push `index.html` to your repository.
+2. Go to **Settings**, then **Pages**.
+3. Under **Source**, choose the `main` branch and the root folder.
+4. Save, then wait a minute or two for the site to go live at [kotala-jagadeesh.github.io/gym](https://kotala-jagadeesh.github.io/gym/).
 
 ## Notes
 
