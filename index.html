@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>College Gym | Train on campus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070a08; --panel:#0f1511; --line:#1d2a21;
+  --neon:#39ff6a; --neon-dim:#1f9a40;
+  --text:#e9f2ec; --muted:#8fa296;
+  --head:'Barlow Condensed','Arial Narrow',sans-serif;
+  --body:'DM Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.6}
+img{display:block;max-width:100%;background:var(--panel)}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--neon);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--head);line-height:1;letter-spacing:.5px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:10;background:rgba(7,10,8,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:var(--head);font-weight:800;font-size:1.6rem}
+.logo span{color:var(--neon)}
+nav ul{display:flex;gap:26px;list-style:none;font-size:.95rem;color:var(--muted)}
+nav ul a:hover{color:var(--neon)}
+.btn{display:inline-block;background:var(--neon);color:#031207;font-weight:700;padding:12px 26px;border-radius:6px;border:0;cursor:pointer;font:700 1rem var(--body);transition:box-shadow .2s,transform .2s}
+.btn:hover{box-shadow:0 0 24px rgba(57,255,106,.55);transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--neon);border:1.5px solid var(--neon)}
+
+/* hero */
+.hero{position:relative;min-height:88vh;display:flex;align-items:center;
+  background:linear-gradient(90deg,rgba(7,10,8,.95) 30%,rgba(7,10,8,.35)),
+  url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=70') center/cover}
+.hero h1{font-size:clamp(3.4rem,10vw,7.5rem);font-weight:800;max-width:11ch}
+.hero h1 em{font-style:normal;color:var(--neon);text-shadow:0 0 28px rgba(57,255,106,.5)}
+.hero p{max-width:46ch;color:var(--muted);margin:22px 0 32px;font-size:1.1rem}
+.hero .actions{display:flex;gap:14px;flex-wrap:wrap}
+
+/* sections */
+section{padding:84px 0}
+.title{font-size:clamp(2.2rem,5vw,3.4rem);font-weight:700;margin-bottom:12px}
+.sub{color:var(--muted);max-width:52ch;margin-bottom:40px}
+
+/* facilities */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;transition:border-color .2s}
+.card:hover{border-color:var(--neon-dim)}
+.card img{height:190px;width:100%;object-fit:cover}
+.card div{padding:18px 20px 22px}
+.card h3{font-size:1.5rem;margin-bottom:6px;color:var(--neon)}
+.card p{color:var(--muted);font-size:.95rem}
+
+/* timings */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.split img{border-radius:10px;border:1px solid var(--line);height:360px;width:100%;object-fit:cover}
+table{width:100%;border-collapse:collapse}
+td{padding:14px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;color:var(--neon);font-weight:500}
+
+/* plans */
+.plans .card div{padding:28px 24px}
+.price{font-family:var(--head);font-size:3.2rem;font-weight:800;margin:6px 0 14px}
+.price small{font-size:1rem;color:var(--muted);font-family:var(--body);font-weight:400}
+.plans ul{list-style:none;margin-bottom:22px;color:var(--muted)}
+.plans li{padding:6px 0 6px 24px;position:relative}
+.plans li::before{content:"✓";position:absolute;left:0;color:var(--neon)}
+.plans .best{border-color:var(--neon);box-shadow:0 0 30px rgba(57,255,106,.15)}
+
+/* join */
+.join{background:var(--panel);border-block:1px solid var(--line)}
+form{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:640px}
+input,select{background:var(--bg);border:1px solid var(--line);color:var(--text);padding:13px 14px;border-radius:6px;font:1rem var(--body);width:100%}
+input:focus,select:focus{border-color:var(--neon);outline:none}
+form .full,form button{grid-column:1/-1}
+#msg{margin-top:14px;color:var(--neon);min-height:1.5em}
+
+footer{padding:36px 0;color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+@media(max-width:760px){
+  nav ul{display:none}
+  .split,form{grid-template-columns:1fr}
+  .split img{height:240px}
+  section{padding:60px 0}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="logo">YOUR COLLEGE <span>GYM</span></a>
+    <ul>
+      <li><a href="#facilities">Facilities</a></li>
+      <li><a href="#timings">Timings</a></li>
+      <li><a href="#plans">Plans</a></li>
+      <li><a href="#join">Join</a></li>
+    </ul>
+    <a href="#join" class="btn">Join now</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <h1>Lift between <em>lectures.</em></h1>
+    <p>The student gym on campus. Free weights, cardio and trainers, open from early morning until night, at a price built for students.</p>
+    <div class="actions">
+      <a href="#join" class="btn">Get your student pass</a>
+      <a href="#facilities" class="btn ghost">See the gym</a>
+    </div>
+  </div>
+</header>
+
+<section id="facilities">
+  <div class="wrap">
+    <h2 class="title">What you get</h2>
+    <p class="sub">Everything a student needs to build strength, stamina and a routine that survives exam season.</p>
+    <div class="grid">
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=700&q=70" alt="Free weights area" loading="lazy">
+        <div><h3>Free weights</h3><p>Dumbbells, barbells and racks for strength work.</p></div>
+      </article>
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=700&q=70" alt="Cardio machines" loading="lazy">
+        <div><h3>Cardio zone</h3><p>Treadmills, cycles and rowers for endurance.</p></div>
+      </article>
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=700&q=70" alt="Personal training" loading="lazy">
+        <div><h3>Trainers</h3><p>Certified coaches to plan your workouts and fix your form.</p></div>
+      </article>
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=700&q=70" alt="Group fitness class" loading="lazy">
+        <div><h3>Group classes</h3><p>Zumba, HIIT and yoga sessions, included in every plan.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="timings">
+  <div class="wrap split">
+    <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?auto=format&fit=crop&w=900&q=70" alt="Students training in the gym" loading="lazy">
+    <div>
+      <h2 class="title">Opening hours</h2>
+      <p class="sub">Quietest before 8 am and after 8 pm.</p>
+      <table>
+        <tr><td>Monday to Friday</td><td>5:30 am to 9:30 pm</td></tr>
+        <tr><td>Saturday</td><td>6:00 am to 8:00 pm</td></tr>
+        <tr><td>Sunday</td><td>7:00 am to 12:00 pm</td></tr>
+        <tr><td>Exam weeks</td><td>Open until 11:00 pm</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="plans" class="plans">
+  <div class="wrap">
+    <h2 class="title">Student plans</h2>
+    <p class="sub">Show your college ID at the desk. Prices below are examples, so replace them with your own.</p>
+    <div class="grid">
+      <article class="card"><div>
+        <h3>Monthly</h3>
+        <p class="price">₹500<small> / month</small></p>
+        <ul><li>Full gym access</li><li>Group classes</li><li>Locker use</li></ul>
+        <a href="#join" class="btn ghost">Choose monthly</a>
+      </div></article>
+      <article class="card best"><div>
+        <h3>Semester</h3>
+        <p class="price">₹2,400<small> / 6 months</small></p>
+        <ul><li>Everything in Monthly</li><li>Free fitness assessment</li><li>Diet guidance</li></ul>
+        <a href="#join" class="btn">Choose semester</a>
+      </div></article>
+      <article class="card"><div>
+        <h3>Annual</h3>
+        <p class="price">₹4,200<small> / year</small></p>
+        <ul><li>Everything in Semester</li><li>2 personal training sessions</li><li>Bring a friend twice a month</li></ul>
+        <a href="#join" class="btn ghost">Choose annual</a>
+      </div></article>
+    </div>
+  </div>
+</section>
+
+<section id="join" class="join">
+  <div class="wrap">
+    <h2 class="title">Join the gym</h2>
+    <p class="sub">Fill this in and the desk will have your pass ready.</p>
+    <form id="joinForm">
+      <input type="text" name="name" placeholder="Full name" required aria-label="Full name">
+      <input type="text" name="roll" placeholder="Roll number" required aria-label="Roll number">
+      <input type="tel" name="phone" placeholder="Phone number" required aria-label="Phone number">
+      <select name="plan" aria-label="Plan">
+        <option>Monthly</option><option>Semester</option><option>Annual</option>
+      </select>
+      <button type="submit" class="btn">Request my pass</button>
+    </form>
+    <p id="msg" role="status"></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Your College Gym. Sports Complex, main campus.</span>
+    <span>gym@yourcollege.edu</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('joinForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  var n=this.name.value.trim();
+  document.getElementById('msg').textContent='Thanks '+n+', your '+this.plan.value+' pass request is in. Collect it at the gym desk with your college ID.';
+  this.reset();
+});
+</script>
+</body>
+</html>
