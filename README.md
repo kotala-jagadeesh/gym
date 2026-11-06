@@ -6,12 +6,12 @@ A one-page website for a college gym, built with plain HTML and CSS in a neon gr
 
 | File | Purpose |
 |------|---------|
-| `college-gym.html` | The whole website (HTML, CSS and a small script in one file) |
+| `index.html` | The whole website (HTML, CSS and a small script in one file) |
 | `README.md` | This guide |
 
 ## How to run
 
-1. Download `college-gym.html`.
+1. Download `index.html`.
 2. Double-click it to open in any modern browser.
 3. Stay connected to the internet so the images and fonts can load.
 
